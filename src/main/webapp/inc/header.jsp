@@ -24,6 +24,7 @@
 	                <a href="#">수강신청</a>
 	                <a href="#">시간표</a>
 	                <a href="#">내 정보</a>
+	                <a href="information.jsp">회원정보 수정</a>
 	            </nav>
 	        </header>
 	        <!-- /HEADER -->
