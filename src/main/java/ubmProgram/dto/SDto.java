@@ -18,9 +18,17 @@ public class SDto {
 	private String s_addr;
 	private int d_id;
 	private Timestamp wdate;
+	private String d_name;
 
 	
 
+	public String getD_name() {
+		return d_name;
+	}
+	public void setD_name(String d_name) {
+		this.d_name = d_name;
+	}
+	
 	// getter, setter
 	public int getS_id() {
 		return s_id;
@@ -70,17 +78,18 @@ public class SDto {
 	public void setWdate(Timestamp wdate) {
 		this.wdate = wdate;
 	}
-	
-	
-	
-	
-	
-	
 	@Override
 	public String toString() {
 		return "SDto [s_id=" + s_id + ", s_name=" + s_name + ", s_pass=" + s_pass + ", s_email=" + s_email + ", s_tel="
-				+ s_tel + ", s_addr=" + s_addr + ", d_id=" + d_id + ", wdate=" + wdate + "]";
+				+ s_tel + ", s_addr=" + s_addr + ", d_id=" + d_id + ", wdate=" + wdate + ", d_name=" + d_name + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

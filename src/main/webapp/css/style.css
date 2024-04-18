@@ -8,6 +8,7 @@
 @import url('bootstrap.min.css');
 
 
+
 body{
     font-family: "Noto Sans KR", sans-serif;
     background: #e8eaeb;
@@ -46,6 +47,24 @@ nav a{
     margin-right: 30px;
 }
 
+/** HwanI - Attendance **/
+.AttendanceBox{
+	width:100%;
+	background: #fff;
+}
+
+.AttendanceBox th, td{
+    text-align: center;
+}
+.AttendanceBox a:hover{
+    text-decoration: none;
+}
+.AttendanceBox .paging{
+    list-style: none;
+}
+.AttendanceBox .paging i{
+	font-size: 30px;
+}
 
 
 
