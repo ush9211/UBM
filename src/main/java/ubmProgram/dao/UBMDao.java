@@ -22,9 +22,39 @@ public class UBMDao {
 		this.conn = conn;
 	}
 	
+<<<<<<< HEAD
 
 
 
+=======
+	 //전체 게시글 수 select
+	  public int AllselectDB() {
+		  int rs = 0;
+        String sql = "select count(*) from professor";
+     
+        
+        try {
+      	stmt = conn.createStatement();
+      	res = stmt.executeQuery(sql);
+      	if(res.next()) {
+      		 rs = res.getInt(1); //rs = res.getInt("count(*)");
+      	}
+        } catch(SQLException e) {
+			  e.printStackTrace();
+		  }
+		  finally {
+			  try {
+				  if(res != null) res.close();
+				  if(pstmt != null) stmt.close();
+				
+			  }
+			  catch(SQLException e) {
+				  e.printStackTrace();
+			  }
+		  }
+        return rs;
+    }
+>>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
 	
 	//회원가입 교수
 		public int insertDB(PDto dto) {

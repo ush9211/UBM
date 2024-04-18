@@ -1,5 +1,10 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/java/ubmProgram/dao/DBConnect.java=UTF-8
 encoding//src/main/java/ubmProgram/dao/UBMDao.java=UTF-8
 encoding//src/main/java/ubmProgram/dto/PDto.java=UTF-8
 encoding//src/main/java/ubmProgram/dto/SDto.java=UTF-8
+=======
+encoding//src/main/webapp/Attendance.jsp=UTF-8
+encoding/<project>=UTF-8
+>>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
