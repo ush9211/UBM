@@ -47,7 +47,7 @@ nav a{
     margin-right: 30px;
 }
 
-<<<<<<< HEAD
+
 /**********login form******************/
 .login-form {
     max-width: 350px;
@@ -58,8 +58,7 @@ nav a{
     border-radius: 5px;
     background-color: #f9f9f9;
 }
-=======
-/** HwanI - Attendance **/
+
 .AttendanceBox{
 	width:100%;
 	background: #fff;
@@ -77,18 +76,6 @@ nav a{
 .AttendanceBox .paging i{
 	font-size: 30px;
 }
-
-
->>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
-
-
-
-
-
-
-
-
-
 
 
 /************* FOOTER *************/

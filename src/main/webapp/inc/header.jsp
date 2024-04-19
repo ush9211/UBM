@@ -21,7 +21,7 @@
 	            <a href="index.jsp" class="brand">김포이젠대학교 학사관리시스템</a>
 	            <nav>
 	            	<a href="#">로그아웃</a>
-	                <a href="#">수강신청</a>
+	                <a href="registeration.jsp">수강신청</a>
 	                <a href="#">시간표</a>
 	                <a href="#">내 정보</a>
 	                <a href="information.jsp">회원정보 수정</a>
