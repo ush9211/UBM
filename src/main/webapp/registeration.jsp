@@ -70,7 +70,7 @@
                      		<div class="list-inbox">
                                 <div class="d-flex justify-content-between py-4">
                                     <div>
-                                        <h3>희망과목 목록</h3>
+                                        <h3>개설과목 목록</h3>
                                     </div>
                                 </div>
             
@@ -141,9 +141,17 @@
                                         </tr>  
                                     </thead>
                                     <tbody>
-                                        <!-- loop -->
+                                        <!-- loop --> 
             								<tr>
-
+            									<td class="text-center">1</td>
+				                                <td class="text-center"><a href="#">삭제</a></td>
+				                                <td class="text-center">학점</td>
+				                                <td class="text-center"><a href="#">신청</a></td>
+				                                <td class="text-center">교과목</td>
+				                                <td class="text-center">담당교수</td>
+				                                <td class="text-center">강의시간</td>
+				                                <td class="text-center">강의실</td>
+				                                <td class="text-center">잔여석</td>
 				                            </tr>
                                         <!-- /loop -->
                                     </tbody>
