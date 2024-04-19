@@ -48,6 +48,7 @@ nav a{
 }
 
 
+
 /**********login form******************/
 .login-form {
     max-width: 350px;
@@ -64,6 +65,12 @@ nav a{
 	background: #fff;
 }
 
+.AttendanceBox .searchform{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto; 
+}
+
 .AttendanceBox th, td{
     text-align: center;
 }
@@ -75,6 +82,9 @@ nav a{
 }
 .AttendanceBox .paging i{
 	font-size: 30px;
+}
+.AttendanceBox btn{
+	left: 0;
 }
 
 
