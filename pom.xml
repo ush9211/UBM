@@ -19,6 +19,29 @@
       </plugin>
     </plugins>
   </build>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+   <dependencies>
+     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+         <dependency>
+             <groupId>com.mysql</groupId>
+             <artifactId>mysql-connector-j</artifactId>
+             <version>8.3.0</version>
+         </dependency>
+    </dependencies>
+=======
+<<<<<<< HEAD
+      <dependencies>
+     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+         <dependency>
+             <groupId>com.mysql</groupId>
+             <artifactId>mysql-connector-j</artifactId>
+             <version>8.3.0</version>
+         </dependency>
+    </dependencies>
+=======
+>>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
   
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
@@ -29,5 +52,10 @@
     </dependency>   
        
   </dependencies>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
+>>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
+>>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
 </project>

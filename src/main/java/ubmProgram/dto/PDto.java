@@ -3,17 +3,17 @@ package ubmProgram.dto;
 public class PDto {
 
 	
-	////////////// 교수 Dto
+	////////////// 援먯닔 Dto
 	
 	
 
-	// 필드
+	// �븘�뱶
 	private int p_id;
 	private String p_pass;
 	private String p_name;
 	private String p_email;
 	private String p_tel;
-	private int d_id;
+
 
 	
 
@@ -48,12 +48,7 @@ public class PDto {
 	public void setP_tel(String p_tel) {
 		this.p_tel = p_tel;
 	}
-	public int getD_id() {
-		return d_id;
-	}
-	public void setD_id(int d_id) {
-		this.d_id = d_id;
-	}
+
 	
 	
 	
@@ -63,7 +58,7 @@ public class PDto {
 	@Override
 	public String toString() {
 		return "PDto [p_id=" + p_id + ", p_pass=" + p_pass + ", p_name=" + p_name + ", p_email=" + p_email + ", p_tel="
-				+ p_tel + ", d_id=" + d_id + "]";
+				+ p_tel + "]";
 	}
 	
 	

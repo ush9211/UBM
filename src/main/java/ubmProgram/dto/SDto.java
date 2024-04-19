@@ -5,18 +5,17 @@ import java.sql.Timestamp;
 public class SDto {
 	
 	
-	////////////// 학생 Dto
+	////////////// �븰�깮 Dto
 	
 	
 
-	// 필드
+	// �븘�뱶
 	private int s_id;
 	private String s_name;
 	private String s_pass;
 	private String s_email;
 	private String s_tel;
 	private String s_addr;
-	private int d_id;
 	private Timestamp wdate;
 	private String d_name;
 
@@ -66,12 +65,6 @@ public class SDto {
 	public void setS_addr(String s_addr) {
 		this.s_addr = s_addr;
 	}
-	public int getD_id() {
-		return d_id;
-	}
-	public void setD_id(int d_id) {
-		this.d_id = d_id;
-	}
 	public Timestamp getWdate() {
 		return wdate;
 	}
@@ -81,7 +74,11 @@ public class SDto {
 	@Override
 	public String toString() {
 		return "SDto [s_id=" + s_id + ", s_name=" + s_name + ", s_pass=" + s_pass + ", s_email=" + s_email + ", s_tel="
+<<<<<<< HEAD
+				+ s_tel + ", s_addr=" + s_addr + ", wdate=" + wdate + "]";
+=======
 				+ s_tel + ", s_addr=" + s_addr + ", d_id=" + d_id + ", wdate=" + wdate + ", d_name=" + d_name + "]";
+>>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
 	}
 	
 	
