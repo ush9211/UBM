@@ -78,6 +78,7 @@ nav a{
 	font-size: 30px;
 }
 
+
 /************* 수강신청 ****************/
 section{
     width:1440px;
@@ -179,6 +180,10 @@ section{
     top: 18px;
 }
 
+/************* 시간표 ************/
+.timetable td{
+	font-size:11px;
+}
 
 /************* FOOTER *************/
 footer{
