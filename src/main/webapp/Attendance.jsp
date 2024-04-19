@@ -52,7 +52,7 @@
                 
                 <form name="searchform" id="searchform" class="searchform mb-3" method="get">
                    <div class="input-group my-3">
-                        <div class="input-group-prepend">
+                        <div class="input-group-prepend" style="width:100px;">
                              <button type="button" class="btn btn-outline-secondary dropdown-toggle" 
                              		 data-toggle="dropdown" value="s_name"> 이름검색
                               </button>
