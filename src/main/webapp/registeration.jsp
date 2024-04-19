@@ -13,8 +13,10 @@
          int cnt = dao.AllselectDB(); 
      
 %>
-		<section>
+
+		<section>	
 			<div class="listbox">
+
                    <div class="tabsbox">
                    
                       <ul class="tabnav">
@@ -157,21 +159,17 @@
          </div><!-- /.tabsbox -->
        </div><!-- /.listbox-->
 
-
-      
-          <table cellspacing="5" align="center" border="1" bordercolor="#5CD1E5" width="600" height="600">
+      <div class="col-3">
+          <table class="timetable" cellspacing="5" align="center" border="1" bordercolor="#5CD1E5" width="300" height="300">
 				<p></p>
-				<caption>
-					<font size="5" color="#4daace">시간표</font>
-					</font>
-				</caption>
+			
 				<tr align="center">
-					<td width="100"></td>
-					<td width="100" bgcolor="#5CD1E5">월</td>
-					<td width="100" bgcolor="#5CD1E5">화</td>
-					<td width="100" bgcolor="#5CD1E5">수</td>
-					<td width="100" bgcolor="#5CD1E5">목</td>
-					<td width="100" bgcolor="#5CD1E5">금</td>
+					<td width="50"></td>
+					<td width="50" bgcolor="#5CD1E5">월</td>
+					<td width="50" bgcolor="#5CD1E5">화</td>
+					<td width="50" bgcolor="#5CD1E5">수</td>
+					<td width="50" bgcolor="#5CD1E5">목</td>
+					<td width="50" bgcolor="#5CD1E5">금</td>
 				</tr>
 		
 				<tr align="center" >
@@ -259,8 +257,8 @@
 					<td colspan="5" bgcolor="#5CD1E5">이젠대학교 경영학과			
 					</td>
 				</tr>
-			</table>
-                           
+			</table>    
+     </div>
    </section>
 
 
