@@ -22,11 +22,7 @@ public class UBMDao {
 		this.conn = conn;
 	}
 	
-<<<<<<< HEAD
 
-
-
-=======
 	 //전체 게시글 수 select
 	  public int AllselectDB() {
 		  int rs = 0;
@@ -54,7 +50,6 @@ public class UBMDao {
 		  }
         return rs;
     }
->>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
 	
 	//회원가입 교수
 		public int insertDB(PDto dto) {

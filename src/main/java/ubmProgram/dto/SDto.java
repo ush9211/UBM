@@ -4,12 +4,7 @@ import java.sql.Timestamp;
 
 public class SDto {
 	
-	
-	////////////// �븰�깮 Dto
-	
-	
 
-	// �븘�뱶
 	private int s_id;
 	private String s_name;
 	private String s_pass;
@@ -18,17 +13,9 @@ public class SDto {
 	private String s_addr;
 	private Timestamp wdate;
 	private String d_name;
-
-	
-
-	public String getD_name() {
-		return d_name;
-	}
-	public void setD_name(String d_name) {
-		this.d_name = d_name;
-	}
-	
-	// getter, setter
+    private int d_id;
+    
+    
 	public int getS_id() {
 		return s_id;
 	}
@@ -71,25 +58,26 @@ public class SDto {
 	public void setWdate(Timestamp wdate) {
 		this.wdate = wdate;
 	}
+	public String getD_name() {
+		return d_name;
+	}
+	public void setD_name(String d_name) {
+		this.d_name = d_name;
+	}
+	public int getD_id() {
+		return d_id;
+	}
+	public void setD_id(int d_id) {
+		this.d_id = d_id;
+	}
+	
 	@Override
 	public String toString() {
 		return "SDto [s_id=" + s_id + ", s_name=" + s_name + ", s_pass=" + s_pass + ", s_email=" + s_email + ", s_tel="
-<<<<<<< HEAD
-				+ s_tel + ", s_addr=" + s_addr + ", wdate=" + wdate + "]";
-=======
-				+ s_tel + ", s_addr=" + s_addr + ", d_id=" + d_id + ", wdate=" + wdate + ", d_name=" + d_name + "]";
->>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
+				+ s_tel + ", s_addr=" + s_addr + ", wdate=" + wdate + ", d_name=" + d_name + ", d_id=" + d_id + "]";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+     
+
+  
 }
