@@ -75,10 +75,10 @@
                                 <table class="table table-hover">
                                     <colgroup>
                                         <col width="5%">
-                                        <col>
+                                        <col width="7%">
                                         <col width="5%">
-                                        <col>
-                                        <col width="20%">
+                                        <col width="7%">
+                                        <col width="25%">
                                         <col>
                                         <col>
                                         <col>
@@ -116,10 +116,10 @@
                                 <table class="table table-hover">
                                     <colgroup>
                                         <col width="5%">
-                                        <col>
+                                        <col width="7%">
                                         <col width="5%">
-                                        <col>
-                                        <col width="20%">
+                                        <col width="7%">
+                                        <col width="25%">
                                         <col>
                                         <col>
                                         <col>
@@ -140,7 +140,9 @@
                                     </thead>
                                     <tbody>
                                         <!-- loop -->
-            
+            								<tr>
+
+				                            </tr>
                                         <!-- /loop -->
                                     </tbody>
                                 </table>
