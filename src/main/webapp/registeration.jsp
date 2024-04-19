@@ -15,6 +15,9 @@
 %>
 
  <section>
+ <div class="container">
+   <div class="row">
+     <div class="col-9">
            <!-- listbox -->
                 <div class="listbox">
                    <div class="tabsbox">
@@ -80,21 +83,19 @@
                
                </div><!-- /.tabsbox -->
                 </div><!-- /.listbox-->
-      
+         </div>
+         <div class="col-3">
           <table cellspacing="5" align="center" border="1" bordercolor="#5CD1E5"
-		width="600" height="600">
-		<p></p>
-		<caption>
-			<font size="5" color="#4daace">시간표</font>
-			</font>
-		</caption>
+		width="300" height="300">
+		
+
 		<tr align="center">
-			<td width="100"></td>
-			<td width="100" bgcolor="#5CD1E5">월</td>
-			<td width="100" bgcolor="#5CD1E5">화</td>
-			<td width="100" bgcolor="#5CD1E5">수</td>
-			<td width="100" bgcolor="#5CD1E5">목</td>
-			<td width="100" bgcolor="#5CD1E5">금</td>
+			<td width="50"></td>
+			<td width="50" bgcolor="#5CD1E5">월</td>
+			<td width="50" bgcolor="#5CD1E5">화</td>
+			<td width="50" bgcolor="#5CD1E5">수</td>
+			<td width="50" bgcolor="#5CD1E5">목</td>
+			<td width="50" bgcolor="#5CD1E5">금</td>
 		</tr>
 
 		<tr align="center" >
@@ -183,7 +184,9 @@
 			</td>
 		</tr>
 	</table>
-                           
+	  </div>
+	</div>
+ </div>    
    </section>
 
 
