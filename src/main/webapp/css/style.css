@@ -190,6 +190,13 @@ section{
 /************* 시간표 ************/
 .timetable td{
 	font-size:11px;
+	
+}
+.timetable tr:first-child{
+	color: #fff;
+}
+.timetable tr:last-child{
+	color: #fff;
 }
 
 /************* FOOTER *************/

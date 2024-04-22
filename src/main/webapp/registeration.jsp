@@ -5,12 +5,17 @@
 <jsp:include page="inc/header.jsp" flush="true" />
 <%       
       
-                
+        /*
+        //db연결 확인
         Connection conn = db.conn;
         UBMDao dao = new  UBMDao(conn);       	                       
         
-          //전체 게시글의 수를 가져옴*/
+          //전체 게시글의 수를 가져옴
          int cnt = dao.AllselectDB(); 
+          */
+          
+          Connection conn = db.conn;
+          UBMDao dao = new  UBMDao(conn);  
      
 %>
 
@@ -157,17 +162,17 @@
          </div><!-- /.tabsbox -->
        </div><!-- /.listbox-->
 
-      <div class="col-3">
-          <table class="timetable" cellspacing="5" align="center" border="1" bordercolor="#5CD1E5" width="300" height="300">
+     
+          <table class="timetable" cellspacing="5" align="center" border="1" bordercolor="#12406b" width="300" height="300">
 				<p></p>
 			
 				<tr align="center">
 					<td width="50"></td>
-					<td width="50" bgcolor="#5CD1E5">월</td>
-					<td width="50" bgcolor="#5CD1E5">화</td>
-					<td width="50" bgcolor="#5CD1E5">수</td>
-					<td width="50" bgcolor="#5CD1E5">목</td>
-					<td width="50" bgcolor="#5CD1E5">금</td>
+					<td width="50" bgcolor="#12406b">월</td>
+					<td width="50" bgcolor="#12406b">화</td>
+					<td width="50" bgcolor="#12406b">수</td>
+					<td width="50" bgcolor="#12406b">목</td>
+					<td width="50" bgcolor="#12406b">금</td>
 				</tr>
 		
 				<tr align="center" >
@@ -252,11 +257,11 @@
 		
 				<tr align="center">
 					<td></td>
-					<td colspan="5" bgcolor="#5CD1E5">이젠대학교 경영학과			
+					<td colspan="5" bgcolor="#12406b">이젠대학교 경영학과			
 					</td>
 				</tr>
 			</table>    
-     </div>
+ 
    </section>
 
 
