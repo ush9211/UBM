@@ -11,6 +11,8 @@ import ubmProgram.dao.DBConnect;
 import ubmProgram.dto.CDto;
 
 public class DbWorks {
+	
+	
 
 	// 필드
 	private int limitPage;
@@ -67,7 +69,7 @@ public class DbWorks {
 			if(sname == null) {
 				allCount = dao.AllSelectDB();
 			}else {
-				allCount = dao.AllSelectDB(sname, svalue);
+				allCount = dao.searchSelectDB(sname,svalue);
 			}
 			
 		} catch (SQLException | NamingException e) {
@@ -87,7 +89,7 @@ public class DbWorks {
 		try {
 			conn = db.getConnection();
 			ClassDao dao = new ClassDao(conn);
-			lists = dao.selectDB(limitPage, listCount);
+			lists = dao.regSelectDB(limitPage, listCount);
 			
 		} catch (SQLException | NamingException e) {
 			e.printStackTrace();
@@ -106,7 +108,7 @@ public class DbWorks {
 		try {
 			conn = db.getConnection();
 			ClassDao dao = new ClassDao(conn);
-			lists = dao.selectDB(limitPage, listCount, sname, svalue);
+			lists = dao.regSearchSelectDB(limitPage, listCount, sname, svalue);
 			
 		} catch (SQLException | NamingException e) {
 			e.printStackTrace();
