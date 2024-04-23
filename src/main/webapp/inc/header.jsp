@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>김포이젠대학교 학사관리시스템</title>
 <link rel="stylesheet" href="css/style.css">
-<script src="./js/jquery.min.js"></script>
-<script src="./js/popper.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/script.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
 </head>
 <body>
 
@@ -22,11 +22,12 @@
 	            <nav>
 	            	<a href="#">로그아웃</a>
 	                <a href="registeration.jsp">수강신청</a>
-	                <a href="#">시간표</a>
+	                <a href="timetable.jsp?s_id=2">시간표</a>
 	                <a href="#">내 정보</a>
 	                <a href="information.jsp">회원정보 수정</a>
 	            </nav>
 	        </header>
 	        <!-- /HEADER -->
+	        <div class="row">
 	        
 	        <div class="row">
