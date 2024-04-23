@@ -4,12 +4,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 public class DBConnect {
 
-	public Connection conn = null; //�븘�뱶 �븘�뱶 珥덇린�솕
+	public Connection conn = null;
 	
 	private String url = "jdbc:mysql://192.168.0.174/team_sql";
-	private String option = "?useUnicode=true&characterEncoding=utf-8"; //getter url二쇱냼 �썑�뿉 ?�궎=媛� �빐二쇰뒗寃�
+	private String option = "?useUnicode=true&characterEncoding=utf-8"; 
 	private String user = "asdf1234!";
 	private String pass = "asdf1234!";
   
@@ -25,4 +29,29 @@ public class DBConnect {
 		}
 	}
 
+	
+	// 커넥션 하는 메소드
+	public Connection getConnection() throws SQLException, NamingException {
+		
+		if(conn == null || conn.isClosed()) {
+			System.out.println("DB 접속 성공");
+		}
+		return conn;
+	}
+	
+	
+	
+	// 커넥션 닫는 메소드
+	public void closeConnection() {
+		try {
+			if(conn != null && !conn.isClosed()) {
+				conn.close();
+				System.out.println("DB를 닫았습니다.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			conn = null;
+		}
+	}
 }

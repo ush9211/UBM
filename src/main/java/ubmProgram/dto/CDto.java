@@ -65,8 +65,6 @@ public class CDto {
 	
 	
 	
-	
-	
 	@Override
 	public String toString() {
 		return "CDto [c_id=" + c_id + ", c_name=" + c_name + ", grade=" + grade + ", when=" + when + ", where=" + where
