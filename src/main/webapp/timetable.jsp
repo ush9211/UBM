@@ -3,6 +3,7 @@
 <%@ page import="ubmProgram.dto.*, ubmProgram.dao.*, java.sql.Connection, java.util.ArrayList "  %>
 <jsp:useBean id="db" class="ubmProgram.dao.DBConnect" scope="page" />
 <jsp:include page="inc/header.jsp" flush="true" />
+<%@taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%       
       
         /*
@@ -28,16 +29,16 @@
 
      <section>
 			
-          <table class="timetable" cellspacing="5" align="center" border="1" bordercolor="#12406b" width="300" height="300">
+          <table class="timetable" cellspacing="5" align="center" border="1" bordercolor="#12406b" width="600" height="600">
 				<p></p>
 
 				<tr align="center">
-					<td width="50"></td>
-					<td width="50" bgcolor="#12406b">월</td>
-					<td width="50" bgcolor="#12406b">화</td>
-					<td width="50" bgcolor="#12406b">수</td>
-					<td width="50" bgcolor="#12406b">목</td>
-					<td width="50" bgcolor="#12406b">금</td>
+					<td width="100"></td>
+					<td width="100" bgcolor="#12406b">월</td>
+					<td width="100" bgcolor="#12406b">화</td>
+					<td width="100" bgcolor="#12406b">수</td>
+					<td width="100" bgcolor="#12406b">목</td>
+					<td width="100" bgcolor="#12406b">금</td>
 				</tr>
 		
 				<tr align="center" >
