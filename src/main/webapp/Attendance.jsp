@@ -6,7 +6,13 @@
 	Connection conn = db.conn;
 	AttendanceDao dao = new AttendanceDao(conn);
 	
-	int c_id = 1; // c_id 받아서 출력 / 임시로 1 입력
+	int c_id = 0;
+	String c_id_param = request.getParameter("c_id");
+	if(c_id_param != null && !c_id_param.isEmpty()) {
+	    c_id = Integer.parseInt(c_id_param);
+	} else {
+	    c_id = 0; // c_id를 받지 않으면 반환
+	}
 	
     String sname = request.getParameter("searchname");  //검색 이름
     String svalue = request.getParameter("searchvalue"); //검색 값
@@ -72,10 +78,15 @@
                
                 <div class="mb-3 pt-3 pb-3" style="font-size:18px;">
                 <%
-                	CDto c_dto = dao.c_selectDB(c_id);  
-                	String c_name = c_dto.getC_name();
-                	String where = c_dto.getWhere();
-                	String when = c_dto.getWhen();
+            		String c_name = "없음";
+            		String where = "없음";
+            		String when = "없음";
+                	if(c_id != 0 ){
+                    	CDto c_dto = dao.c_selectDB(c_id);  
+                    	c_name = c_dto.getC_name();
+                    	where = c_dto.getWhere();
+                    	when = c_dto.getWhen();}
+
                 %>
                 	<label class="font-weight-bold">수업명</label> : <%=c_name %> / <label class="font-weight-bold">총 인원</label> : <%=formatter.format(allCount) %>명 <br> 
                 	<label class="font-weight-bold">수업장소</label> : <%=where %> / <label class="font-weight-bold">수업 시간</label> : <%=when %>

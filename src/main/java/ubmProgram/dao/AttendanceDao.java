@@ -46,6 +46,28 @@ public class AttendanceDao {
     	return rs;
     }
     
+    // 교수 전용, 모든 수업 수
+    public int CountSelectDB_p(int p_id) {
+    	int rs = 0;
+    	String sql = "select count(case when p_id="+p_id+" then c_id end) from class";   	
+    	try {
+    		pstmt = conn.prepareStatement(sql);
+      	  	res = pstmt.executeQuery();
+    		    if(res.next()) {
+    		    	rs = res.getInt(1);
+    		 }
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	} finally {
+    		try {
+    		   if(res != null) res.close();
+    		   if(stmt != null) stmt.close();
+    		}catch(SQLException e) {e.printStackTrace();}   
+    	}
+    	System.out.println("AllSelectDB 완료");
+    	return rs;
+    }
+    
   //select student 학생 관련 정보
     public ArrayList<SDto> s_selectDB(){
     	
@@ -297,6 +319,7 @@ public class AttendanceDao {
        	
        	return cdto;
        }
+    
     
     // 결석한 학생과 이유를 DB에 작성
     public int insert(WDto dto) {
