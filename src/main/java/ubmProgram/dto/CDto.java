@@ -15,6 +15,7 @@ public class CDto {
 	private String p_name;
 	private int d_id;
 	private int s_id;
+	private String d_name;
 	
 	
 	public int getC_id() {
@@ -70,6 +71,12 @@ public class CDto {
 	}
 	public void setS_id(int s_id) {
 		this.s_id = s_id;
+	}
+	public String getD_name() {
+		return d_name;
+	}
+	public void setD_name(String d_name) {
+		this.d_name = d_name;
 	}
 	
 	

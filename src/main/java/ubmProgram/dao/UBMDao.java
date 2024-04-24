@@ -13,13 +13,13 @@ import ubmProgram.dto.SDto;
 
 public class UBMDao {
 
-	// �븘�뱶
+	// 필드
 	PreparedStatement pstmt = null;
 	Statement stmt = null;
 	ResultSet res = null;
 	Connection conn;
 	
-	// 湲곕낯 �깮�꽦�옄
+	// 생성자
 	public UBMDao(Connection conn) {
 		this.conn = conn;
 	}

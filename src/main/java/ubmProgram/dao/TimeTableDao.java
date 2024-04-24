@@ -106,4 +106,24 @@ public class TimeTableDao {
     	System.out.println(pstmt);
     	return c_dtos;
     }
+    
+    // 요일을 숫자로 변환하는 메서드
+    public int getDayOfWeekIndex(String dayOfWeek) {
+        switch (dayOfWeek) {
+            case "월":
+                return 0;
+            case "화":
+                return 1;
+            case "수":
+                return 2;
+            case "목":
+                return 3;
+            case "금":
+                return 4;
+            default:
+                return -1;
+        }
+    }
+    
+    
 }
