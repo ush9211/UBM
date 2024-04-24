@@ -130,7 +130,7 @@ section{
    background: #12406b;
    margin-top:-16px;
 }
-.searchbox{
+.searchform{
     border: 1px solid #ddd;
     border-radius: 15px;
     padding:30px;
@@ -145,6 +145,9 @@ section{
 .dropdown-toggle{
    border: 1px solid #ddd;
    width:400px;
+}
+.input-group-prepend{
+    display: relative;
 }
 .keyword{
 	left:-9px;
@@ -191,6 +194,7 @@ section{
     right: 0;
     top: 18px;
 }
+
 
 /************* 시간표 ************/
 .timetable td{

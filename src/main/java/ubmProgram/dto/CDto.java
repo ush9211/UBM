@@ -16,6 +16,7 @@ public class CDto {
 	private int d_id;
 	private int s_id;
 	private String d_name;
+	private int max;
 	
 	
 	public int getC_id() {
@@ -78,7 +79,12 @@ public class CDto {
 	public void setD_name(String d_name) {
 		this.d_name = d_name;
 	}
-	
+	public int getMax() {
+		return max;
+	}
+	public void setMax(int max) {
+		this.max = max;
+	}
 	
 	@Override
 	public String toString() {
