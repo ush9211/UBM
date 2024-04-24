@@ -78,7 +78,7 @@ public class ClassDao {
 		
 		ArrayList<CDto> dtos = new ArrayList<>();
 		
-		String sql = "select A.c_id, B.d_name, A.grade, A.c_name, C.p_name, A.when, A.where, C.p_id, B.d_id from class as A join department as B join professor as C on A.d_id=B.d_id and A.p_id=C.p_id limit ?, ?";
+		String sql = "select A.c_id, B.d_name, A.grade, A.c_name, C.p_name, A.when, A.where, A.max, C.p_id, B.d_id from class as A join department as B join professor as C on A.d_id=B.d_id and A.p_id=C.p_id limit ?, ?";
 		//String sql = "select * from jboard where writer like '%�̸�%' order by refid desc, renum asc limit ?, ?";
 		//String sql = "select * from jboard where title like '%�ϴ�%' order by refid desc, renum asc limit ?, ?";
 		try {
@@ -95,6 +95,7 @@ public class ClassDao {
 				String p_name = res.getString("p_name");
 				String when = res.getString("when");
 				String where = res.getString("where");
+				int max = res.getInt("max");
 				int p_id = res.getInt("p_id");
 				int d_id = res.getInt("d_id");
 				
@@ -106,6 +107,7 @@ public class ClassDao {
 				bDto.setP_name(p_name);
 				bDto.setWhen(when);
 				bDto.setWhere(where);
+				bDto.setMax(max);
 				bDto.setP_id(p_id);
 				bDto.setD_id(d_id);
 				dtos.add(bDto);
@@ -130,7 +132,7 @@ public class ClassDao {
 			
 			ArrayList<CDto> dtos = new ArrayList<>();
 			
-			String sql = "select A.c_id, B.d_name, A.grade, A.c_name, C.p_name, A.when, A.where, C.p_id, B.d_id from class as A join department as B join professor as C on A.d_id=B.d_id and A.p_id=C.p_id where" + name + " LIKE ? limit ?, ?";
+			String sql = "select A.c_id, B.d_name, A.grade, A.c_name, C.p_name, A.when, A.where, A.max, C.p_id, B.d_id from class as A join department as B join professor as C on A.d_id=B.d_id and A.p_id=C.p_id where" + name + " LIKE ? limit ?, ?";
 			//String sql = "select * from jboard where writer like '%�̸�%' order by refid desc, renum asc limit ?, ?";
 			//String sql = "select * from jboard where title like '%�ϴ�%' order by refid desc, renum asc limit ?, ?";
 			try {
@@ -148,6 +150,7 @@ public class ClassDao {
 					String p_name = res.getString("p_name");
 					String when = res.getString("when");
 					String where = res.getString("where");
+					int max = res.getInt("max");
 					int p_id = res.getInt("p_id");
 					int d_id = res.getInt("d_id");
 					
@@ -159,6 +162,7 @@ public class ClassDao {
 					bDto.setP_name(p_name);
 					bDto.setWhen(when);
 					bDto.setWhere(where);
+					bDto.setMax(max);
 					bDto.setP_id(p_id);
 					bDto.setD_id(d_id);
 					dtos.add(bDto);
