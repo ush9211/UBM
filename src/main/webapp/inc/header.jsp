@@ -22,7 +22,7 @@
 	            <nav>
 	            	<a href="#">로그아웃</a>
 	                <a href="registeration.jsp">수강신청</a>
-	                <a href="#">시간표</a>
+	                <a href="timetable.jsp?s_id=6">시간표</a>
 	                <a href="#">내 정보</a>
 	                <a href="information.jsp">회원정보 수정</a>
 	                <a href="Attendance.jsp">출석부</a>
@@ -31,4 +31,4 @@
 	        <!-- /HEADER -->
 	        <div class="row">
 	        
-	
+	        <div class="row">
