@@ -66,16 +66,47 @@ nav a{
 .AttendanceBox{
    width:100%;
    background: #fff;
+   border : 1.5px solid #ccc;
 }
 
-.AttendanceBox .searchform{
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto; 
+.AttendanceBox .searchbox{
+	position: relative;
+	width: 900px;
+	margin: 0 auto;
+	border: 1.5px solid #ddd;
+    border-radius: 15px;
+    padding: 40px 120px
 }
-
+.AttendanceBox .searchNameBtn{
+	width: 100px;
+}
+.AttendanceBox .form-control{
+	height: calc(1.5em + .75rem + 3px);
+}
+.AttendanceBox th{
+	border-right : 2px solid #ddd;
+	border-top : 2px solid #ddd;
+}
+.AttendanceBox th:first-child{
+	border-left : 2px solid #ddd;
+}
 .AttendanceBox th, td{
     text-align: center;
+    vertical-align: middle;
+}
+.AttendanceBox tr{
+	border-bottom : 1px solid #ddd;
+}
+.AttendanceBox .table-top{
+	background: #eee;
+	font-size: 17px;
+}
+.AttendanceBox .table-main{
+	height: 60px;
+	text-align: center;
+}
+.AttendanceBox .table td, .table th{
+	vertical-align: middle;
 }
 .AttendanceBox a:hover{
     text-decoration: none;
@@ -89,6 +120,7 @@ nav a{
 .AttendanceBox btn{
 	left: 0;
 }
+
 
 
 /************* 수강신청 ****************/

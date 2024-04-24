@@ -25,6 +25,7 @@
 	                <a href="#">시간표</a>
 	                <a href="#">내 정보</a>
 	                <a href="information.jsp">회원정보 수정</a>
+	                <a href="Attendance.jsp">출석부</a>
 	            </nav>
 	        </header>
 	        <!-- /HEADER -->
