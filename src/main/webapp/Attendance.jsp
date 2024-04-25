@@ -6,7 +6,13 @@
 	Connection conn = db.conn;
 	AttendanceDao dao = new AttendanceDao(conn);
 	
-	int c_id = 1; // c_id 받아서 출력 / 임시로 1 입력
+	int c_id = 0;
+	String c_id_param = request.getParameter("c_id");
+	if(c_id_param != null && !c_id_param.isEmpty()) {
+	    c_id = Integer.parseInt(c_id_param);
+	} else {
+	    c_id = 0; // c_id를 받지 않으면 반환
+	}
 	
     String sname = request.getParameter("searchname");  //검색 이름
     String svalue = request.getParameter("searchvalue"); //검색 값
@@ -47,12 +53,13 @@
 <jsp:include page="inc/header.jsp" flush="true" />
             <!-- listbox -->
 
-            <div class="AttendanceBox mt-3 p-5">
+            <div class="AttendanceBox p-5">
                 <h1 class="text-center mb-5">출석부</h1>
                 
+                
                 <form name="searchform" id="searchform" class="searchform mb-3" method="get">
-                   <div class="input-group my-3">
-                        <div class="input-group-prepend" style="width:100px;">
+                   <div class="input-group my-3 searchbox">
+                        <div class="input-group-prepend searchNameBtn">
                              <button type="button" class="btn btn-outline-secondary dropdown-toggle" 
                              		 data-toggle="dropdown" value="s_name"> 이름검색
                               </button>
@@ -69,17 +76,22 @@
                    </div>
                </form>
                
-                <div class="pb-3">
+                <div class="mb-3 pt-3 pb-3" style="font-size:18px;">
                 <%
-                	CDto c_dto = dao.c_selectDB(c_id);  
-                	String c_name = c_dto.getC_name();
-                	String where = c_dto.getWhere();
-                	String when = c_dto.getWhen();
+            		String c_name = "없음";
+            		String where = "없음";
+            		String when = "없음";
+                	if(c_id != 0 ){
+                    	CDto c_dto = dao.c_selectDB(c_id);  
+                    	c_name = c_dto.getC_name();
+                    	where = c_dto.getWhere();
+                    	when = c_dto.getWhen();}
+
                 %>
                 	<label class="font-weight-bold">수업명</label> : <%=c_name %> / <label class="font-weight-bold">총 인원</label> : <%=formatter.format(allCount) %>명 <br> 
                 	<label class="font-weight-bold">수업장소</label> : <%=where %> / <label class="font-weight-bold">수업 시간</label> : <%=when %>
                 </div>
-                <form action="Attendanceok.jsp" name="attendance_form" id="attendance_form" class="attendance_form" method="post">
+                <form action="Attendanceok.jsp?" name="attendance_form" id="attendance_form" class="attendance_form" method="post">
 	                <table class="table p-5">
 	                    <colgroup>
 	                       <col width="8%">
@@ -91,7 +103,7 @@
 	                       <col width="30%">
 	                    </colgroup>
 	                    <thead>
-	                        <tr>
+	                        <tr class="table-top">
 	                        	<th>번호</th>
 	                            <th>이름</th>
 	                            <th>학번</th>
@@ -118,14 +130,14 @@
 	                   
 	                   %>    
 	                   
-	                   <tr>
+	                   <tr class="table-main">
 	                        <td><%=num %></td>
 	                        <td class="font-weight-bold"><%=s_name %></td>
 	                        <td><%=s_id %></td>
 	                        <td><%=d_name %></td>
 	                        <td><%=s_tel %></td>
 	                        <td><%=s_email %></td>
-	                        <td>미출석<input type="checkbox" id="c_checkbox" name="c_checkbox" class="ml-2 mr-2" value="<%=s_id %>">
+	                        <td>미출석<input type="checkbox" id="s_id" name="s_id" class="ml-2 mr-2" value="<%=s_id %>">
 	                        	사유<input type="text" id="why" name="why" class="ml-2 mr-2"></td>
 	                    </tr>
 	
@@ -135,8 +147,8 @@
 	                    </tbody>
 	                </table>
 	                <div class="text-right m-3">
-	                	<input type="hidden" id="c_id" name="c_id" value="<%=c_id %>">
-	                	<button class="btn btn-primary px-5 mx-2" type="submit">저장</button>                     
+	                	<button class="btn btn-primary px-5 mx-2" type="submit">저장</button>
+	                	<input type="hidden" id="c_id" name="c_id" value="<%=c_id %>">             
 	                </div>
 	            </form>
 	                <!-- paging -->
