@@ -194,6 +194,9 @@ section{
     right: 0;
     top: 18px;
 }
+.hfill{
+	display:none;
+}
 
 
 /************* 시간표 ************/

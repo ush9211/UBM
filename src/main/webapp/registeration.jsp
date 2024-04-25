@@ -107,10 +107,10 @@
                          <div class="tab active" id="open">
                          
                             <form name="searchform" id="searchform" class="searchform" method="get">
-		                        <div class="search2 input-group mb-3 col-12">
+		                        <div class="search2 input-group mb-3">
 		                           <p class="col-2">키워드 검색</p>
-		                           <div class="dropdown col-4 keyword">
-		                              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+		                           <div class="input-group-prepend" style="width:100px;">
+		                              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" value="d_name">
 		                              		학과명
 		                              </button>
 		                              <input type="hidden" name="searchname" id="searchname" value="d_name">
@@ -122,7 +122,7 @@
 		                           </div>
 		                           <input type="search" name="searchvalue" class="form-control" placeholder="검색">
 		                           <div class="input-group-append">
-		                               <button type="submit" class="btn btn-primary col-2"><i class="ri-search-line"></i>&nbsp;조회</button>
+		                               <button type="submit" class="btn btn-primary"><i class="ri-search-line"></i>&nbsp;조회</button>
 		                           </div>
 		                        </div>
 		                     </form>
@@ -185,6 +185,7 @@
 			                                <td class="text-center"><%=grade %></td>
 			                                <td class="text-center">
 			                                	<a href="#" class="hempty"><i class="ri-heart-add-2-line"></i></a>
+			                                	<a href="#" class="hfill"><i class="ri-heart-3-fill"></i></a>
 		                                	</td>
 			                              <% if(sess.getAttribute("mid") != null) {%>
 			                                <td>
