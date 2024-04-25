@@ -25,16 +25,7 @@
         Connection conn = db.conn;
         ClassDao dao = new  ClassDao(conn);  
       
-        /*
-        //db연결 확인
-        Connection conn = db.conn;
->>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
-        UBMDao dao = new  UBMDao(conn);       	                       
-        
-<<<<<<< HEAD
-          
-         /********* 페이징 변수 ************/
-     	
+
      	// 현재 페이지
      	int pg;
      	
