@@ -46,7 +46,7 @@ public class AttendanceDao {
     	return rs;
     }
     
-    // 교수 전용, 모든 수업 수
+    // 교수 전용, 담당하는 모든 수업 수
     public int CountSelectDB_p(int p_id) {
     	int rs = 0;
     	String sql = "select count(case when p_id="+p_id+" then c_id end) from class";   	
@@ -65,6 +65,29 @@ public class AttendanceDao {
     		}catch(SQLException e) {e.printStackTrace();}   
     	}
     	System.out.println("AllSelectDB 완료");
+    	return rs;
+    }
+    
+ // 교수 전용, 모든 수업 수
+    public int CountSelectDB_p() {
+    	int rs = 0;
+    	String sql = "select count(*) from class";   	
+    	try {
+    		pstmt = conn.prepareStatement(sql);
+      	  	res = pstmt.executeQuery();
+    		    if(res.next()) {
+    		    	rs = res.getInt(1);
+    		 }
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	} finally {
+    		try {
+    		   if(res != null) res.close();
+    		   if(stmt != null) stmt.close();
+    		}catch(SQLException e) {e.printStackTrace();}   
+    	}
+    	System.out.println("AllSelectDB 완료");
+    	System.out.println(rs);
     	return rs;
     }
     
@@ -184,7 +207,7 @@ public class AttendanceDao {
         				+"WHERE c_id="+c_id+" AND "+sname+" LIKE ? ORDER BY s_id limit ?, ?";
         	try {
         	  pstmt = conn.prepareStatement(sql);
-        	  pstmt.setString(1, "%"+svalue+"%");
+        	  pstmt.setString(1, "%"+svalue+"%");	
         	  pstmt.setInt(2, limitPage);
         	  pstmt.setInt(3, listCount);
         	  	  
