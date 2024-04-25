@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="ubmProgram.dao.*,
+<%@ page import="ubmProgram.dao.ClassDao,
 				ubmProgram.dto.*,
 				ubmProgram.service.*,
 				java.sql.Connection,
@@ -13,25 +13,16 @@
 <jsp:include page="inc/header.jsp" flush="true" />
 
 <%  
-
 		//세션 객체를 얻음
 		HttpSession sess = request.getSession(true);
 		
 		String sname = request.getParameter("searchname");
 		String svalue = request.getParameter("searchvalue");
 		
-		ServletContext cont = getServletContext();
-                
         Connection conn = db.conn;
         ClassDao dao = new  ClassDao(conn);  
       
-        /*
-        //db연결 확인
-        Connection conn = db.conn;
->>>>>>> branch 'master' of https://github.com/ush9211/UBM.git
-        UBMDao dao = new  UBMDao(conn);       	                       
-        
-<<<<<<< HEAD
+
           
          /********* 페이징 변수 ************/
      	
@@ -42,7 +33,7 @@
      	int cnt;
      	
      	// 2. 한 페이지에 보일 목록 수
-     	int listCount = 10;
+     	int listCount = 5;
      	
      	// 3. 한 페이지에 보일 페이지 수
      	int pageCount = 5;
@@ -50,21 +41,20 @@
      	// 4. 쿼리문으로 보낼 시작 페이지번호
      	int limitPage;
      	
-     	String cpg = "1";
-     	cpg = request.getParameter("cpg");
-     	
-     	if(cpg == null){
-     		pg = 1;
-     	}else{
-     		pg = Integer.parseInt(cpg);
-     	}
+        String cpg;
+        if(request.getParameter("cpg") == null){
+        	cpg = "1";	
+        }else{
+        	cpg = request.getParameter("cpg");
+        }
+        pg = (cpg == null)?1:Integer.parseInt(cpg);  //3항 연산   
 
           
-          
-   
      
      	// (현재 페이지-1) x 목록 수
     	limitPage = (pg-1)*listCount;
+        
+        
      	
      	
     	DbWorks dbs = new DbWorks(limitPage, listCount, sname, svalue);
@@ -78,22 +68,27 @@
     	
 
     	// 검색
-    	ArrayList<CDto> list = null;
+    	ArrayList<CDto> list;
     	
     	if(sname == null || sname.trim().isEmpty()){
-    		list = dbs.getList();
+    		list = dao.regSelectDB(limitPage, listCount);
     	}else{
-    		list = dbs.getSearchList();
+    		list = dao.regSearchSelectDB(limitPage, listCount, sname, svalue);
     	}
 
     	
     	
     	SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
     	NumberFormat formatter = NumberFormat.getInstance();
+    	
+    	
 %>
-   
+   <script>
 
-     <section>
+   			alert("지금은 수강신청 기간이 아닙니다.");
+   </script>
+
+     <section class="registeration">
 			<div class="listbox">
 
                    <div class="tabsbox">
@@ -107,9 +102,8 @@
                          <div class="tab active" id="open">
                          
                             <form name="searchform" id="searchform" class="searchform" method="get">
-		                        <div class="search2 input-group mb-3">
-		                           <p class="col-2">키워드 검색</p>
-		                           <div class="input-group-prepend" style="width:100px;">
+		                        <div class="input-group my-3 searchbox">
+		                           <div class="input-group-prepend searchNameBtn">
 		                              <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" value="d_name">
 		                              		학과명
 		                              </button>
@@ -183,14 +177,10 @@
 			                                <td class="text-center"><%=num %></td>
 			                                <td class="text-center"><%=d_name %></td>
 			                                <td class="text-center"><%=grade %></td>
-			                                <td class="text-center">
-			                                	<a href="#" class="hempty"><i class="ri-heart-add-2-line"></i></a>
-			                                	<a href="#" class="hfill"><i class="ri-heart-3-fill"></i></a>
-		                                	</td>
+			                                <td class="text-center"><input type="checkbox" id="order" name="order" class="ml-2 mr-2" value="<%=c_id%>"></td>
 			                              <% if(sess.getAttribute("mid") != null) {%>
 			                                <td>
 			                                	<a href="contents.jsp?id=<%=c_id%>&cpg=<%=pg %>"><%=c_name %></a>
-			                                    <span></span>
 			                                    <!--  
 			                                    <i class="ri-file-image-fill"></i>
 			                                    <i class="ri-file-pdf-2-fill"></i>
@@ -198,7 +188,7 @@
 			                                    -->
 			                                </td>
 			                              <% }else{ %>
-			                               	<td>
+			                               	<td class="ctitle">
 			                               		<!-- javascript:void(0) : 자바스크립트 실행금지 -->
 			                               		<a href="javascript:void(0)"><%=c_name %></a>
 			                                    <span></span>
@@ -223,6 +213,8 @@
                                 </table>
                          	</div>
                          </div>
+                     
+                         
                          <div class="tab" id="wish">
                             <div class="list-inbox">
                                 <div class="d-flex justify-content-between py-4">
@@ -283,10 +275,7 @@
                    
                 </div> <!-- /.tabbox -->          
   
-			<div class="d-flex justify-content-between py-4">
-			                        <div>
-			                            
-			                        </div>
+			<div class="d-flex justify-content-center py-4">
 		                        <%
 				                     // 검색일때 처리
 				                    	String query = "";

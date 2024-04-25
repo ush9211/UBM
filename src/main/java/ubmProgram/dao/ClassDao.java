@@ -99,6 +99,7 @@ public class ClassDao {
 				int p_id = res.getInt("p_id");
 				int d_id = res.getInt("d_id");
 				
+				
 				CDto bDto = new CDto();
 				bDto.setC_id(c_id);
 				bDto.setD_name(d_name);
@@ -128,18 +129,18 @@ public class ClassDao {
 	
 	
 	// 수강신청 개설과목 검색 리스트
-		public ArrayList<CDto> regSearchSelectDB(int limitPage, int listCount, String name, String value){
+		public ArrayList<CDto> regSearchSelectDB(int limitPage, int listCount, String sname, String svalue){
 			
 			ArrayList<CDto> dtos = new ArrayList<>();
 			
-			String sql = "select A.c_id, B.d_name, A.grade, A.c_name, C.p_name, A.when, A.where, A.max, C.p_id, B.d_id from class as A join department as B join professor as C on A.d_id=B.d_id and A.p_id=C.p_id where" + name + " LIKE ? limit ?, ?";
+			String sql = "select A.c_id, B.d_name, A.grade, A.c_name, C.p_name, A.when, A.where, A.max, C.p_id, B.d_id from class as A join department as B join professor as C on A.d_id=B.d_id and A.p_id=C.p_id where " + sname + " LIKE ? limit ?, ?";
 			//String sql = "select * from jboard where writer like '%�̸�%' order by refid desc, renum asc limit ?, ?";
 			//String sql = "select * from jboard where title like '%�ϴ�%' order by refid desc, renum asc limit ?, ?";
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, "%"+value+"%");
-				pstmt.setInt(1, limitPage);
-				pstmt.setInt(2, listCount);
+				pstmt.setString(1, "%"+svalue+"%");
+				pstmt.setInt(2, limitPage);
+				pstmt.setInt(3, listCount);
 				res = pstmt.executeQuery();
 				
 				while(res.next()) {
@@ -166,6 +167,7 @@ public class ClassDao {
 					bDto.setP_id(p_id);
 					bDto.setD_id(d_id);
 					dtos.add(bDto);
+					
 				}
 			}catch (SQLException e) {
 				e.printStackTrace();

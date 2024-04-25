@@ -115,7 +115,8 @@ public class DbWorks {
 		} finally {
 			db.closeConnection();
 		}
-		
+
+		System.out.println(lists);
 		return lists;
 	}
 	

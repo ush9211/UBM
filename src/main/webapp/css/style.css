@@ -80,7 +80,8 @@ nav a{
 .AttendanceBox .searchNameBtn{
 	width: 100px;
 }
-.AttendanceBox .form-control{
+.AttendanceBox .form-control,
+.registeration .form-control{
 	height: calc(1.5em + .75rem + 3px);
 }
 .AttendanceBox th{
@@ -226,8 +227,35 @@ section{
     right: 0;
     top: 18px;
 }
-.hfill{
-	display:none;
+td.ctitle a,
+td.ctitle a:link{
+    text-decoration: none;
+    color:#333;
+}
+
+
+/* PAGING */
+.paging{
+    list-style-type:none;
+    display:flex;
+    align-item : center;
+    justify-content: center;    
+}
+.paging li{
+    font-size:16px;
+    margin-left:5px;
+    margin-right:5px;
+}
+.paging li a{
+    color:#434c53;
+    padding:3px 10px;
+}
+.paging li a:hover,
+.paging li a.active{
+    background:#434c53;
+    border-radius:5px;
+    color:#fff;
+    text-decoration:none;
 }
 
 
