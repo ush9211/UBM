@@ -23,7 +23,7 @@ public class TimeTableDao {
 		this.conn = conn;
 	}
 	
-	//select 교수테이블
+	//select 학생테이블
     public ArrayList<SDto> selectSDB(int s_id){
        
        ArrayList<SDto> sDtos = new ArrayList<>();
@@ -36,7 +36,6 @@ public class TimeTableDao {
          res = pstmt.executeQuery();
        
          while(res.next()) {
-           int p_id = res.getInt("s_id");
            String s_pass = res.getString("s_pass");
            String s_name = res.getString("s_name");
            String s_email = res.getString("s_email");
@@ -154,6 +153,29 @@ public class TimeTableDao {
     	return c_dtos;
     }
     
+    // 중복제거를 한 후 s_id의 개수를 뽑아냄
+    public int sidCountDB() {
+    	int rs = 0;
+    	String sql = "SELECT COUNT(DISTINCT s_id) FROM s_class";	
+    	try {
+    		pstmt = conn.prepareStatement(sql);
+      	  	res = pstmt.executeQuery();
+    		    if(res.next()) {
+    		    	rs = res.getInt(1);
+    		 }
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	} finally {
+    		try {
+    		   if(res != null) res.close();
+    		   if(stmt != null) stmt.close();
+    		}catch(SQLException e) {e.printStackTrace();}   
+    	}
+    	System.out.println("sidCountDB 완료");
+    	return rs;
+    }
+    
+        
     // 요일을 숫자로 변환하는 메서드
     public int getDayOfWeekIndex(String dayOfWeek) {
         switch (dayOfWeek) {

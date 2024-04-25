@@ -5,19 +5,22 @@
 <jsp:include page="inc/header.jsp" flush="true" />
 <%@taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%       
-      
-        
-          String s_id = request.getParameter("s_id");   
-          System.out.println(s_id);
-          int stid = Integer.parseInt(s_id);
-          Connection conn = db.conn;
-          TimeTableDao dao = new TimeTableDao(conn);  
+
+        Connection conn = db.conn;
+        TimeTableDao dao = new TimeTableDao(conn);        
+        int s_id;
+        String stid = request.getParameter("s_id");
+        if(stid != null && !stid.isEmpty()) {
+           s_id = Integer.parseInt(stid);
+         } else {
+            s_id = 0; // s_id를 받지 않으면 반환
+         }   
           ArrayList<CDto> lists =  null;
           ArrayList<CDto> list =  null;
           ArrayList<SDto> slist =  null;
           lists = dao.r_selectDB();
-          list = dao.r_selectDB(s_id);
-          slist = dao.selectSDB(stid);
+          list = dao.r_selectDB(stid);
+          slist = dao.selectSDB(s_id);
           SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
           // 시간표 초기화
           String[][] timetable = new String[9][5]; // 9교시(행) x 월~금(열)
@@ -27,7 +30,7 @@
               }
           }
           
-          // 시간표에 교수가 담당하는 강의 정보 입력
+          // 시간표에 학생이 신청한 강의 정보 입력
           for (CDto cdto : list) {
               // 요일과 교시 정보 추출
               String when = cdto.getWhen();
@@ -38,13 +41,16 @@
        	      String cname = cdto.getC_name();
        	      String pname = cdto.getP_name();        
        	      
-       	      // 강의명, 학점, 강의실 입력
-              int dayIndex = dao.getDayOfWeekIndex(dayOfWeek); // ProfessorDao 클래스의 메서드 사용
+       	      // 강의명, 교수명, 강의실 입력
+              int dayIndex = dao.getDayOfWeekIndex(dayOfWeek); // TimeTableDao 클래스의 메서드 사용
               if (dayIndex != -1 && timeSlot >= 9 && timeSlot <= 17) { // 시간표 범위 내에 있는 경우에만 입력
                   timetable[timeSlot - 9][dayIndex] = cdto.getC_name() + " (" + cdto.getP_name() + ", " + cdto.getWhere() + ")";
               }
           }
-     
+        
+          
+          int s_count = dao.sidCountDB();
+          System.out.println(s_count);
 %>
     
 
@@ -227,6 +233,20 @@
               -->
 		</div>
  </section>
-  
+<script>
+$(function(){
+	if(<%=s_id%> == 0){
+		var insert_s = prompt("열람을 원하는 학생의 id를 입력해주세요.");
+		if (insert_s !== null) {
+			window.location.href = "timetable.jsp?s_id="+insert_s;
+			if(insert_s == 0 || insert_s > <%=s_count%> ){
+				alert("해당 id값이 없습니다. 다시 확인해주세요.");	
+			}
+		} else{
+		    alert("오류가 발생했습니다. 다시 입력해주세요.");
+		}
+	}
+})
+</script>
 
 <jsp:include page="inc/footer.jsp" flush="true" />
