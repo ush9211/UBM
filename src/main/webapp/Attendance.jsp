@@ -6,7 +6,7 @@
 	Connection conn = db.conn;
 	AttendanceDao dao = new AttendanceDao(conn);
 	
-	int c_id = 0;
+	int c_id;
 	String c_id_param = request.getParameter("c_id");
 	if(c_id_param != null && !c_id_param.isEmpty()) {
 	    c_id = Integer.parseInt(c_id_param);
@@ -61,7 +61,8 @@
                              <button type="button" class="btn btn-outline-secondary dropdown-toggle" 
                              		 data-toggle="dropdown" value="s_name"> 이름검색
                               </button>
-                              <input type="hidden" name="searchname" id="searchname" value="title">
+                              <input type="hidden" name="searchname" id="searchname" value="s_name">
+                              <input type="hidden" name="c_id" id="c_id" value="<%=c_id%>">
                               <div class="dropdown-menu">
                                 <a class="dropdown-item" href="s_name">이름검색</a>
                                 <a class="dropdown-item" href="d_name">학과검색</a>
@@ -70,6 +71,7 @@
                        <input type="search" name="searchvalue" class="form-control" placeholder="검색">
                        <div class="input-group-append">
                           <button type="submit" class="btn btn-primary"><i class="ri-search-line"></i></button>
+                          <a href="Attendance.jsp?c_id=<%=c_id%>" class="ml-2"><i class="ri-arrow-go-back-fill i_return"></i></a>
                        </div>
                    </div>
                </form>
@@ -82,7 +84,7 @@
 	            	String where = c_dto.getWhere();
 	            	String when = c_dto.getWhen();
 	            	
-                	if(c_id != 0 || c_id > c_count){
+                	if(c_id == 0 || c_id > c_count){
                 		c_name = "없음";
                 		where = "없음";
                 		when = "없음";
@@ -92,7 +94,7 @@
                 	<label class="font-weight-bold">수업명</label> : <%=c_name %> / <label class="font-weight-bold">총 인원</label> : <%=formatter.format(allCount) %>명 <br> 
                 	<label class="font-weight-bold">수업장소</label> : <%=where %> / <label class="font-weight-bold">수업 시간</label> : <%=when %>
                 </div>
-                <form action="Attendanceok.jsp?" name="attendance_form" id="attendance_form" class="attendance_form" method="post">
+                <form action="Attendanceok.jsp?c_id=<%=c_id %>" name="attendance_form" id="attendance_form" class="attendance_form" method="post">
 	                <table class="table p-5">
 	                    <colgroup>
 	                       <col width="8%">
@@ -148,8 +150,7 @@
 	                    </tbody>
 	                </table>
 	                <div class="text-right m-3">
-	                	<button class="btn btn-primary px-5 mx-2" type="submit">저장</button>
-	                	<input type="hidden" id="c_id" name="c_id" value="<%=c_id %>">             
+	                	<button class="btn btn-primary px-5 mx-2" type="submit">저장</button>           
 	                </div>
 	            </form>
 	                <!-- paging -->
@@ -163,19 +164,19 @@
 	        	</div>
        		
 <script>
-	$(function(){
-		if(<%=c_id%> == 0){
-			var insert_c = prompt("열람을 원하는 수업의 id를 입력해주세요.");
-			if (insert_c !== null) {
-				window.location.href = "Attendance.jsp?c_id="+insert_c;
-				if(insert_c == 0 || insert_c > <%=c_count%> ){
-					alert("해당 id값이 없습니다. 다시 확인해주세요.");	
-				}
-			} else{
-			    alert("오류가 발생했습니다. 다시 입력해주세요.");
+$(function(){
+	if(<%=c_id%> == 0){
+		var insert_c = prompt("열람을 원하는 수업의 id를 입력해주세요.");
+		if (insert_c !== null) {
+			window.location.href = "Attendance.jsp?c_id="+insert_c;
+			if(insert_c == 0 || insert_c > <%=c_count%> ){
+				alert("해당 id값이 없습니다. 다시 확인해주세요.");	
 			}
+		} else{
+		    alert("오류가 발생했습니다. 다시 입력해주세요.");
 		}
-	})
+	}
+})
 </script>
 
 <jsp:include page="inc/footer.jsp" flush="true" />

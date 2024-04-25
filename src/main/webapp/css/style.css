@@ -68,7 +68,9 @@ nav a{
    background: #fff;
    border : 1.5px solid #ccc;
 }
-
+.AttendanceBox .i_return{
+	font-size: 25px;
+}
 .AttendanceBox .searchbox{
 	position: relative;
 	width: 900px;
@@ -76,6 +78,11 @@ nav a{
 	border: 1.5px solid #ddd;
     border-radius: 15px;
     padding: 40px 120px
+}
+.AttendanceBox{
+   width:100%;
+   background: #fff;
+   border : 1.5px solid #ccc;
 }
 .AttendanceBox .searchNameBtn{
 	width: 100px;
