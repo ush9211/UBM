@@ -43,7 +43,7 @@
                 <div class="tab active" id="wish">
                     <div class="list-inbox">
                         <div class="d-flex justify-content-center py-4">
-                            <h3>교수 정보</h3>
+                            <h2>교수 정보</h2>
                         </div>
                         <table class="table table-hover mx-auto">
                             <colgroup>
@@ -91,17 +91,18 @@
                         <div class="row">
                             <div class="col text-center">
                                 <div class="d-flex justify-content-center py-4">
-                            	<h3>교수 시간표</h3>
+                            	<h2>교수 시간표</h2>
                         		</div>
-                                <table class="timetable mx-auto" cellspacing="5" border="1" bordercolor="#5CD1E5" width="500" height="500">
+                                <table class="timetable" cellspacing="5" align="center" border="1" bordercolor="#12406b" width="600" height="600">
                                     <tr align="center">
-                                        <td width="50"></td>
-                                        <td width="50" bgcolor="#5CD1E5">월</td>
-                                        <td width="50" bgcolor="#5CD1E5">화</td>
-                                        <td width="50" bgcolor="#5CD1E5">수</td>
-                                        <td width="50" bgcolor="#5CD1E5">목</td>
-                                        <td width="50" bgcolor="#5CD1E5">금</td>
+                                        <td width="100"></td>
+                                        <td width="100" bgcolor="#5CD1E5">월</td>
+                                        <td width="100" bgcolor="#5CD1E5">화</td>
+                                        <td width="100" bgcolor="#5CD1E5">수</td>
+                                        <td width="100" bgcolor="#5CD1E5">목</td>
+                                        <td width="100" bgcolor="#5CD1E5">금</td>
                                     </tr>
+                                    
                                     <% for(int i = 1; i <= 9; i++) { %>
                                         <tr align="center">
                                             <td><%= i %>교시<p>(<%= (i + 8) %>-<%= (i + 9) %>시)</p></td>
@@ -110,7 +111,13 @@
                                             <% } %>
                                         </tr>
                                     <% } %>
-                                </table>
+                                    
+                                <tr align="center">
+					<td></td>
+					<td colspan="5" bgcolor="#5CD1E5">이젠대학교 경영학과			
+					</td>
+				</tr>
+			</table>
                             </div>
                         </div>
                     </div> <!-- /.list-inbox -->
