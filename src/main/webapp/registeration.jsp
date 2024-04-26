@@ -84,8 +84,7 @@
     	
 %>
    <script>
-
-   			alert("지금은 수강신청 기간이 아닙니다.");
+		alert("지금은 수강신청 기간이 아닙니다.");
    </script>
 
      <section class="registeration">
@@ -127,90 +126,92 @@
                                         <h3>개설과목 목록</h3>
                                     </div>
                                 </div>
-            
-                                <table class="table table-hover">
-                                    <colgroup>
-                                        <col width="5%">
-                                        <col width="7%">
-                                        <col width="5%">
-                                        <col width="7%">
-                                        <col width="25%">
-                                        <col>
-                                        <col>
-                                        <col>
-                                        <col width="7%">
-                                    </colgroup>
-                                    <thead>
-                                        <tr>
-                                            <th>순번</th>
-                                            <th>학과</th>
-                                            <th>학점</th>
-                                            <th>희망</th>
-                                            <th>교과목</th>
-                                            <th>담당교수</th>
-                                            <th>강의시간</th>
-                                            <th>강의실</th>
-                                            <th>잔여석</th>
-                                        </tr>  
-                                    </thead>
-                                    <tbody>
-                                        <!-- loop -->
-            							<!-- loop -->
-            							<%
-			                            	// 게시글 번호
-			                            	int num = cnt - limitPage;
-			                            
-			                            	for(int i=0; i<list.size(); i++){
-			                            		CDto dto = list.get(i);
-			                            		int c_id = dto.getC_id();
-			                            		String d_name = dto.getD_name();
-			                            		int grade = dto.getGrade();
-			                            		String c_name = dto.getC_name();
-			                            		String p_name = dto.getP_name();
-			                            		String when = dto.getWhen();
-			                            		String where = dto.getWhere();
-			                            		int max = dto.getMax();
-			                            		int p_id = dto.getP_id();
-			                            		int d_id = dto.getD_id();
-			                            %>
-			                            <tr>
-			                                <td class="text-center"><%=num %></td>
-			                                <td class="text-center"><%=d_name %></td>
-			                                <td class="text-center"><%=grade %></td>
-			                                <td class="text-center"><input type="checkbox" id="order" name="order" class="ml-2 mr-2" value="<%=c_id%>"></td>
-			                              <% if(sess.getAttribute("mid") != null) {%>
-			                                <td>
-			                                	<a href="contents.jsp?id=<%=c_id%>&cpg=<%=pg %>"><%=c_name %></a>
-			                                    <!--  
-			                                    <i class="ri-file-image-fill"></i>
-			                                    <i class="ri-file-pdf-2-fill"></i>
-			                                    <i class="ri-file-hwp-fill"></i>
-			                                    -->
-			                                </td>
-			                              <% }else{ %>
-			                               	<td class="ctitle">
-			                               		<!-- javascript:void(0) : 자바스크립트 실행금지 -->
-			                               		<a href="javascript:void(0)"><%=c_name %></a>
-			                                    <span></span>
-			                                    <!--  
-			                                    <i class="ri-file-image-fill"></i>
-			                                    <i class="ri-file-pdf-2-fill"></i>
-			                                    <i class="ri-file-hwp-fill"></i>
-			                                    -->
-			                                </td>
-			                              <% } %>
-			                                <td class="text-center"><%=p_name %></td>
-			                                <td class="text-center"><%=when %></td>
-			                                <td class="text-center"><%=where %></td>
-			                                <td class="text-center"><%=max %></td>
-			                            </tr>
-			                            <%
-			                                num--;
-			                            	}
-			                            %>
-                                        <!-- /loop -->
-                                    </tbody>
-                                </table>
+            					<form name="reg-form" method="post" id="reg-form">
+	                                <table class="table table-hover">
+	                                    <colgroup>
+	                                        <col width="5%">
+	                                        <col width="7%">
+	                                        <col width="5%">
+	                                        <col width="7%">
+	                                        <col width="25%">
+	                                        <col>
+	                                        <col>
+	                                        <col>
+	                                        <col width="7%">
+	                                    </colgroup>
+	                                    <thead>
+	                                        <tr>
+	                                            <th>순번</th>
+	                                            <th>학과</th>
+	                                            <th>학점</th>
+	                                            <th>희망</th>
+	                                            <th>교과목</th>
+	                                            <th>담당교수</th>
+	                                            <th>강의시간</th>
+	                                            <th>강의실</th>
+	                                            <th>잔여석</th>
+	                                        </tr>  
+	                                    </thead>
+	                                    <tbody>
+	                                        <!-- loop -->
+	            							<!-- loop -->
+	            							<%
+				                            	// 게시글 번호
+				                            	int num = cnt - limitPage;
+				                            
+				                            	for(int i=0; i<list.size(); i++){
+				                            		CDto dto = list.get(i);
+				                            		int c_id = dto.getC_id();
+				                            		String d_name = dto.getD_name();
+				                            		int grade = dto.getGrade();
+				                            		String c_name = dto.getC_name();
+				                            		String p_name = dto.getP_name();
+				                            		String when = dto.getWhen();
+				                            		String where = dto.getWhere();
+				                            		int max = dto.getMax();
+				                            		int p_id = dto.getP_id();
+				                            		int d_id = dto.getD_id();
+				                            %>
+				                            <tr>
+				                                <td class="text-center"><%=num %></td>
+				                                <td class="text-center"><%=d_name %></td>
+				                                <td class="text-center"><%=grade %></td>
+				                                <td class="text-center"><input type="checkbox" id="order" name="order" class="ml-2 mr-2" value="<%=c_id%>"></td>
+				                              <% if(sess.getAttribute("mid") != null) {%>
+				                                <td>
+				                                	<a href="contents.jsp?id=<%=c_id%>&cpg=<%=pg %>"><%=c_name %></a>
+				                                    <!--  
+				                                    <i class="ri-file-image-fill"></i>
+				                                    <i class="ri-file-pdf-2-fill"></i>
+				                                    <i class="ri-file-hwp-fill"></i>
+				                                    -->
+				                                </td>
+				                              <% }else{ %>
+				                               	<td class="ctitle">
+				                               		<!-- javascript:void(0) : 자바스크립트 실행금지 -->
+				                               		<a href="javascript:void(0)"><%=c_name %></a>
+				                                    <span></span>
+				                                    <!--  
+				                                    <i class="ri-file-image-fill"></i>
+				                                    <i class="ri-file-pdf-2-fill"></i>
+				                                    <i class="ri-file-hwp-fill"></i>
+				                                    -->
+				                                </td>
+				                              <% } %>
+				                                <td class="text-center"><%=p_name %></td>
+				                                <td class="text-center"><%=when %></td>
+				                                <td class="text-center"><%=where %></td>
+				                                <td class="text-center"><%=max %></td>
+				                            </tr>
+				                            <%
+				                                num--;
+				                            	}
+				                            %>
+	                                        <!-- /loop -->
+	                                    </tbody>
+	                                </table>
+	                                <input type="hidden" name="cart" id="cart" class="cart">
+                                </form>
                          	</div>
                          </div>
                      
