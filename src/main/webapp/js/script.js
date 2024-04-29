@@ -25,6 +25,7 @@ $(function(){
         $(href).addClass('active');
     });
     
+
     $(".b-student").click(function () {
        $("form").attr("action", "login.jsp");
      });
@@ -34,4 +35,6 @@ $(function(){
       });  
     
   }); //jquery
-     
+
+    
+
