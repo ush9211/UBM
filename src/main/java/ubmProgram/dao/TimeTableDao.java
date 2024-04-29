@@ -5,9 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import ubmProgram.dto.CDto;
+import ubmProgram.dto.PDto;
+import ubmProgram.dto.SDto;
 
 public class TimeTableDao {
 	
@@ -19,7 +22,50 @@ public class TimeTableDao {
 	public TimeTableDao(Connection conn) {
 		this.conn = conn;
 	}
-		
+	
+	//select 학생테이블
+    public ArrayList<SDto> selectSDB(int s_id){
+       
+       ArrayList<SDto> sDtos = new ArrayList<>();
+   
+       String sql = "select * from student where s_id = ?";
+       try {
+         pstmt = conn.prepareStatement(sql);
+         pstmt.setInt(1, s_id);
+              
+         res = pstmt.executeQuery();
+       
+         while(res.next()) {
+           String s_pass = res.getString("s_pass");
+           String s_name = res.getString("s_name");
+           String s_email = res.getString("s_email");
+           String s_tel = res.getString("s_tel");
+           String s_addr = res.getString("s_addr");
+           Timestamp wdate = res.getTimestamp("wdate");
+           
+           SDto sDto = new SDto();
+           sDto.setS_id(s_id);
+           sDto.setS_pass(s_pass);
+           sDto.setS_name(s_name);
+           sDto.setS_email(s_email);
+           sDto.setS_tel(s_tel);
+           sDto.setS_addr(s_addr);
+           sDto.setWdate(wdate);
+           sDtos.add(sDto);
+         }
+       } catch(SQLException e) {
+          e.printStackTrace();
+       } finally {
+          try {
+             if(res != null) res.close();
+             if(pstmt != null) pstmt.close();
+          }catch(SQLException e) {e.printStackTrace();}   
+       }
+       
+       return sDtos;
+    }
+	
+	
 	//수강신청 정보를 이용해 교수명, 강의명, 강의실 정보를 뽑아오기 위한 r_seelctDB
     public ArrayList<CDto> r_selectDB(){
     
@@ -107,6 +153,29 @@ public class TimeTableDao {
     	return c_dtos;
     }
     
+    // 중복제거를 한 후 s_id의 개수를 뽑아냄
+    public int sidCountDB() {
+    	int rs = 0;
+    	String sql = "SELECT COUNT(DISTINCT s_id) FROM s_class";	
+    	try {
+    		pstmt = conn.prepareStatement(sql);
+      	  	res = pstmt.executeQuery();
+    		    if(res.next()) {
+    		    	rs = res.getInt(1);
+    		 }
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	} finally {
+    		try {
+    		   if(res != null) res.close();
+    		   if(stmt != null) stmt.close();
+    		}catch(SQLException e) {e.printStackTrace();}   
+    	}
+    	System.out.println("sidCountDB 완료");
+    	return rs;
+    }
+    
+        
     // 요일을 숫자로 변환하는 메서드
     public int getDayOfWeekIndex(String dayOfWeek) {
         switch (dayOfWeek) {

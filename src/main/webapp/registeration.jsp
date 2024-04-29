@@ -12,7 +12,7 @@
 <jsp:useBean id="db" class="ubmProgram.dao.DBConnect" scope="page" />
 <jsp:include page="inc/header.jsp" flush="true" />
 
-<%  
+<%
 		//세션 객체를 얻음
 		HttpSession sess = request.getSession(true);
 		
@@ -21,12 +21,11 @@
 		
         Connection conn = db.conn;
         ClassDao dao = new  ClassDao(conn);  
-      
 
           
          /********* 페이징 변수 ************/
      	
-     	// 현재 페이지
+
      	int pg;
      	
      	// 1. 전체 게시글 수
@@ -84,8 +83,10 @@
     	
 %>
    <script>
-		alert("지금은 수강신청 기간이 아닙니다.");
+//		alert("지금은 수강신청 기간이 아닙니다.");
    </script>
+   
+<script src="js/jquery.min.js"></script>
 
      <section class="registeration">
 			<div class="listbox">
@@ -125,8 +126,12 @@
                                     <div>
                                         <h3>개설과목 목록</h3>
                                     </div>
+                                    <div>
+                                    	<input type="button" name="checkAll" id="checkAll" value="전체 선택" />
+                                    	<input type="button" name="uncheckAll" id="uncheckAll" value="전체 선택 해제" />
+                                    </div>
                                 </div>
-            					<form name="reg-form" method="post" id="reg-form">
+ <!--           					<form name="reg-form" method="post" id="reg-form"> --> 
 	                                <table class="table table-hover">
 	                                    <colgroup>
 	                                        <col width="5%">
@@ -176,7 +181,10 @@
 				                                <td class="text-center"><%=num %></td>
 				                                <td class="text-center"><%=d_name %></td>
 				                                <td class="text-center"><%=grade %></td>
-				                                <td class="text-center"><input type="checkbox" id="order" name="order" class="ml-2 mr-2" value="<%=c_id%>"></td>
+				                                <td class="text-center">
+				                                	<input type="checkbox"  name="chkBox" class="ml-2 mr-2" value="<%=c_id%>">
+			                                		<input type="hidden" name="chk" id="chk<%=i %>" value="<%=c_id%>">
+			                                	</td>
 				                              <% if(sess.getAttribute("mid") != null) {%>
 				                                <td>
 				                                	<a href="contents.jsp?id=<%=c_id%>&cpg=<%=pg %>"><%=c_name %></a>
@@ -210,8 +218,8 @@
 	                                        <!-- /loop -->
 	                                    </tbody>
 	                                </table>
-	                                <input type="hidden" name="cart" id="cart" class="cart">
-                                </form>
+	                                <input type="button" id="chkk" name="chkk" value="희망과목에 담기">
+<!--                              </form> -->   
                          	</div>
                          </div>
                      
@@ -344,6 +352,39 @@
        </div><!-- /.listbox-->    
 			
  </section>
-  
+<script>
+	$(document).ready(function(){
+		
+        // 체크 박스 모두 체크
+        $("#checkAll").click(function() {
+            $("input[name='chkBox']:checkbox").each(function() {
+                $(this).attr("checked", true);
+            });
+        });
+ 
+        // 체크 박스 모두 해제
+        $("#uncheckAll").click(function() {
+            $("input[name='chkBox']:checkbox").each(function() {
+                $(this).attr("checked", false);
+            });
+        });
+		
+		$("#chkk").click(function(){
+			var tmpCnt = $("input[name='chkBox']:checked").length;
+			
+			if(tmpCnt > 0){
+				$("input[name='chkBox']:checked").each(function(index){
+					var tmpVal = $(this).val();
+					console.log("$(this).val() ? = " + tmpVal);
+					console.log("index" + index + " = " + $(this).next().attr('id') + ", val = " + $(this).next().val());
+				});
+			}
+			if(tmpCnt === 0){
+				alert ("과목을 선택해주세요.");
+				return;
+			}
+		});
+	});
+</script>
 
 <jsp:include page="inc/footer.jsp" flush="true" />
