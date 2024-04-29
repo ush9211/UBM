@@ -4,6 +4,7 @@
 <jsp:useBean id="db" class="ubmProgram.dao.DBConnect" scope="page" />
 <jsp:include page="inc/header.jsp" flush="true" />
 <%@taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%       
 
         Connection conn = db.conn;
@@ -33,8 +34,8 @@
           // 시간표에 학생이 신청한 강의 정보 입력
           for (CDto cdto : list) {
               // 요일과 교시 정보 추출
-              String when = cdto.getWhen();
-              String[] whenParts = when.split(" ");
+              String when = cdto.getWhen(); //요일
+              String[] whenParts = when.split(" "); //공백별로 문자열 나누기 (월, 1교시) ,(월, 2교시) 이렇게 나눔
               String dayOfWeek = whenParts[0];
               int timeSlot = Integer.parseInt(whenParts[1].replace("시", "")); // "10시"에서 "시" 제거 후 정수로 변환
               String where = cdto.getWhere();
@@ -42,15 +43,17 @@
        	      String pname = cdto.getP_name();        
        	      
        	      // 강의명, 교수명, 강의실 입력
-              int dayIndex = dao.getDayOfWeekIndex(dayOfWeek); // TimeTableDao 클래스의 메서드 사용
+              int dayIndex = dao.getDayOfWeekIndex(dayOfWeek); // TimeTableDao 클래스의 메서드 사용 (요일별로 번호를 추출)
               if (dayIndex != -1 && timeSlot >= 9 && timeSlot <= 17) { // 시간표 범위 내에 있는 경우에만 입력
                   timetable[timeSlot - 9][dayIndex] = cdto.getC_name() + " (" + cdto.getP_name() + ", " + cdto.getWhere() + ")";
+                  
               }
           }
         
           
           int s_count = dao.sidCountDB();
           System.out.println(s_count);
+          
 %>
     
 
@@ -233,6 +236,7 @@
               -->
 		</div>
  </section>
+ 
 <script>
 $(function(){
 	if(<%=s_id%> == 0){
